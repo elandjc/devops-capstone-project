@@ -63,7 +63,7 @@ dbrm: ## Stop and remove PostgreSQL in Docker
 	docker stop postgres
 	docker rm postgres
 
-db: ## Run PostgreSQL in Docker
+db: ## Run PostgreSQL in Docker v2
 	$(info Running PostgreSQL...)
 	docker run -d --name postgres \
 		-p 5432:5432 \
