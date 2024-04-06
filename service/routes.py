@@ -4,6 +4,8 @@ Account Service
 This microservice handles the lifecycle of Accounts
 """
 # pylint: disable=unused-import
+
+
 from flask import jsonify, request, make_response, abort, url_for   # noqa; F401
 from service.models import Account
 from service.common import status  # HTTP Status Codes
@@ -13,6 +15,8 @@ from . import app  # Import Flask application
 ############################################################
 # Health Endpoint
 ############################################################
+
+
 @app.route("/health")
 def health():
     """Health Status"""
@@ -22,6 +26,8 @@ def health():
 ######################################################################
 # GET INDEX
 ######################################################################
+
+
 @app.route("/")
 def index():
     """Root URL response"""
@@ -38,6 +44,8 @@ def index():
 ######################################################################
 # CREATE A NEW ACCOUNT
 ######################################################################
+
+
 @app.route("/accounts", methods=["POST"])
 def create_accounts():
     """
@@ -62,6 +70,8 @@ def create_accounts():
 ######################################################################
 
 # ... place you code here to LIST accounts ...
+
+
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
     """
@@ -80,6 +90,8 @@ def list_accounts():
 ######################################################################
 
 # ... place you code here to READ an account ...
+
+
 @app.route("/accounts/<int:account_id>", methods=["GET"])
 def get_accounts(account_id):
     """
@@ -97,6 +109,8 @@ def get_accounts(account_id):
 ######################################################################
 
 # ... place you code here to UPDATE an account ...
+
+
 @app.route("/accounts/<int:account_id>", methods=["PUT"])
 def update_accounts(account_id):
     """
@@ -117,7 +131,9 @@ def update_accounts(account_id):
 
 
 # ... place you code here to DELETE an account ...
-@app.route("/accounts/<int:account_id>",methods=["DELETE"])
+
+
+@app.route("/accounts/<int:account_id>", methods=["DELETE"])
 def delete_accounts(account_id):
     """
     Delete an Account
