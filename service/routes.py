@@ -62,11 +62,11 @@ def create_accounts():
 ######################################################################
 
 # ... place you code here to LIST accounts ...
-@app.route("/accounts",methods=["GET"])
+@app.route("/accounts", methods=["GET"])
 def list_accounts():
     """
     List all Accounts
-    This endpoint will list all accounts 
+    This endpoint will list all accounts
     """
     app.logger.info("Request to list Accounts")
     accounts = Account.all()
@@ -90,23 +90,23 @@ def get_accounts(account_id):
     account = Account.find(account_id)
     if not account:
         abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.")
-    
+        
     return account.serialize(), status.HTTP_200_OK
 ######################################################################
 # UPDATE AN EXISTING ACCOUNT
 ######################################################################
 
 # ... place you code here to UPDATE an account ...
-@app.route("/accounts/<int:account_id>",methods=["PUT"])
+@app.route("/accounts/<int:account_id>", methods=["PUT"])
 def update_accounts(account_id):
     """
         Update an Account
         This endpoitn will update an Account based on the posted data
     """
     app.logger.info("Request to update an Account with id:%s", account_id)
-    account=Account.find(account_id)
+    account = Account.find(account_id)
     if not account:
-        abort(status.HTTP_404_NOT_FOUND,f"Account with id[{account_id}] could not be found.")
+        abort(status.HTTP_404_NOT_FOUND, f"Account with id[{account_id}] could not be found.")
     account.deserialize(request.get_json())
     account.update()
 
@@ -114,6 +114,7 @@ def update_accounts(account_id):
 ######################################################################
 # DELETE AN ACCOUNT
 ######################################################################
+
 
 # ... place you code here to DELETE an account ...
 @app.route("/accounts/<int:account_id>",methods=["DELETE"])
@@ -123,7 +124,7 @@ def delete_accounts(account_id):
     This endpoint will delete an account based on the account_id that is requested
     """
     app.logger.info("Request to delete an Account with id: %s", account_id)
-    account=Account.find(account_id)
+    account = Account.find(account_id)
     if account:
         account.delete()
     return "", status.HTTP_204_NO_CONTENT
